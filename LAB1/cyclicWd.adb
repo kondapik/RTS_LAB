@@ -52,18 +52,18 @@ procedure cyclic_wd is
 			or
 				accept End3 do
 					checkTask := False;
-					-- taskTime :=  Clock - wdStart;
-					-- if (taskTime > 0.5) then
-					-- 	put_line("Task 3 exceeded its deadline*");
-					-- end if;
+					taskTime :=  Clock - wdStart;
+					if (taskTime > 0.5) then
+						put_line("Task 3 exceeded its deadline");
+					end if;
 				end End3;
 			end select;
 
 			if checkTask = True then
-				taskTime :=  Clock - wdStart;
-				if (taskTime > 0.5) then
+				-- taskTime :=  Clock - wdStart;
+				if ((Clock - wdStart) > 0.5) then
 					put_line("Task 3 exceeded its deadline.");
-					--checkTask := False;
+					checkTask := False;
 				end if;
 			end if;
 		end loop;

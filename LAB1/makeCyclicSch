@@ -1,0 +1,12 @@
+PROG=cyclicSch
+RM=rm all
+
+all: $(PROG).adb
+	@gnatmake $(PROG).adb -o $(PROG)
+
+	./$(PROG)
+
+.PHONY: clean
+clean:
+	$(RM) $(PROG)
+	$(RM) *.o *.ali	

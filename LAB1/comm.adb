@@ -3,7 +3,7 @@ use Ada.Calendar, Ada.Text_IO;
 
 procedure comm is
     Message: constant String := "Process communication";
-	type randRange is range 0..20;
+	type randRange is range 0..20; -- sertting range for numbers sent by producer and read by consumer
 	package randInt is new ada.numerics.discrete_random(randRange);
 	use randInt;
 	gen : Generator;
@@ -15,11 +15,10 @@ procedure comm is
 	end buffer;
 
 	task producer is
-        entry stopProducer;
+        entry stopProducer; -- Stop Producer
 	end producer;
 
 	task consumer;
-
 
 	task body buffer is 
 		Message: constant String := "buffer executing";
@@ -27,23 +26,23 @@ procedure comm is
 		type myIntArray is array (Index) of randRange;
 
 		fifoBuffer : myIntArray;
-		buffLen,buffEmpty : Integer := 11;
-		writeIdx, readIdx : Index := 0;
+		buffLen,buffEmpty : Integer := 11; -- setting buffer length and the number of empty slots
+		writeIdx, readIdx : Index := 0; -- initalizing reading and writing index to 0
 	begin
 		Put_Line(Message);
 		loop
             select
-				when buffEmpty > 0 =>
+				when buffEmpty > 0 => -- Block producer if buffer is full
 					accept push(element : in randRange) do
 						fifoBuffer(writeIdx) := element;
-						writeIdx := Index(Integer(writeIdx + 1) mod buffLen);
-						buffEmpty := buffEmpty - 1;
+						writeIdx := Index(Integer(writeIdx + 1) mod buffLen); -- wrapping index
+						buffEmpty := buffEmpty - 1; -- reduce the empty slots
 					end push;
-				or when buffEmpty < buffLen =>
+				or when buffEmpty < buffLen => -- Block consumer if buffer is empty
 					accept  pop(element : out randRange) do
 						element := fifoBuffer(readIdx);
-						readIdx := Index(Integer(readIdx + 1) mod buffLen);
-						buffEmpty := buffEmpty + 1;
+						readIdx := Index(Integer(readIdx + 1) mod buffLen); -- wrapping index
+						buffEmpty := buffEmpty + 1;  -- increment the empty slots
 					end pop;
 				or
 					accept stopBuffer;
@@ -75,7 +74,7 @@ procedure comm is
 				-- 	exit;
 				-- end stopProducer;
 			or
-				delay Duration((randNo mod 3));
+				delay Duration((randNo mod 3)); -- wait for random time  before pushing the value
 				Put_Line("Pushing " & randRange'Image(randNo) & " into buffer");
 				buffer.push(randNo);
 			end select;
@@ -91,11 +90,11 @@ procedure comm is
 		Put_Line(Message);
 		Main_Cycle:
 		loop
-			delay Duration((Random(gen) mod 18));
+			delay Duration((Random(gen) mod 18)); -- wait for random time before popping the value
             buffer.pop(element);
 			Put_Line("Popping " & randRange'Image(element) & " from buffer");
-			sum := sum + Integer(element);
-			if sum > 100 then
+			sum := sum + Integer(element); -- sum all popped elements
+			if sum > 100 then -- stop producer and buffer if sum is more than 100
 				producer.stopProducer;
 				buffer.stopBuffer;
 				put_line("Exiting Consumer");

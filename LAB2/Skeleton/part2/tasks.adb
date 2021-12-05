@@ -49,53 +49,53 @@ task body eventDispatcherTask is
 begin      
 	-- task body starts here ---
 	loop
-	-- read sensors and print (have a look at webots_api.ads) ----
-	-- Put_Line("Light Sensor Values: " & Integer'Image(read_light_sensor(LS1)) & ", " & Integer'Image(read_light_sensor(LS2)) & ", " & Integer'Image(read_light_sensor(LS3)));
-		-- put_line("Distance to Obstacle: " & Integer'Image(read_distance_sensor));
-	if ((read_light_sensor(LS1) < lineLimit or read_light_sensor(LS2) < lineLimit or read_light_sensor(LS3) < lineLimit) and lineFound = False) then
-		lineFound := True;
-		Event.signal(onLine);
-	elsif (read_light_sensor(LS1) > lineLimit and read_light_sensor(LS2) > lineLimit and read_light_sensor(LS3) > lineLimit and lineFound = True) then
-		lineFound := False;
-		Event.signal(offLine);
-	end if;
+		-- read sensors and print (have a look at webots_api.ads) ----
+		-- Put_Line("Light Sensor Values: " & Integer'Image(read_light_sensor(LS1)) & ", " & Integer'Image(read_light_sensor(LS2)) & ", " & Integer'Image(read_light_sensor(LS3)));
+		--  put_line("Distance to Obstacle: " & Integer'Image(read_distance_sensor));
+		if ((read_light_sensor(LS1) < lineLimit or read_light_sensor(LS2) < lineLimit or read_light_sensor(LS3) < lineLimit) and lineFound = False) then
+			lineFound := True;
+			Event.signal(onLine);
+		elsif (read_light_sensor(LS1) > lineLimit and read_light_sensor(LS2) > lineLimit and read_light_sensor(LS3) > lineLimit and lineFound = True) then
+			lineFound := False;
+			Event.signal(offLine);
+		end if;
 
-	if (button_pressed(UpButton) = True and prevStatus(UpButton) = False) then
-		prevStatus(UpButton) := True;
-		Event.signal(upPressed);
-	elsif (button_pressed(UpButton) = False and prevStatus(UpButton) = True) then
-		prevStatus(UpButton) := False;
-		Event.signal(upReleased);
-	end if;
-	
-	if (button_pressed(DownButton) = True and prevStatus(DownButton) = False) then
-		prevStatus(DownButton) := True;
-		Event.signal(downPressed);
-	elsif (button_pressed(DownButton) = False and prevStatus(DownButton) = True) then
-		prevStatus(DownButton) := False;
-		Event.signal(downReleased);
-	end if;
+		if (button_pressed(UpButton) = True and prevStatus(UpButton) = False) then
+			prevStatus(UpButton) := True;
+			Event.signal(upPressed);
+		elsif (button_pressed(UpButton) = False and prevStatus(UpButton) = True) then
+			prevStatus(UpButton) := False;
+			Event.signal(upReleased);
+		end if;
+		
+		if (button_pressed(DownButton) = True and prevStatus(DownButton) = False) then
+			prevStatus(DownButton) := True;
+			Event.signal(downPressed);
+		elsif (button_pressed(DownButton) = False and prevStatus(DownButton) = True) then
+			prevStatus(DownButton) := False;
+			Event.signal(downReleased);
+		end if;
 
-	if (button_pressed(LeftButton) = True and prevStatus(LeftButton) = False) then
-		prevStatus(LeftButton) := True;
-		Event.signal(leftPressed);
-	elsif (button_pressed(LeftButton) = False and prevStatus(LeftButton) = True) then
-		prevStatus(LeftButton) := False;
-		Event.signal(leftReleased);
-	end if;
-	
-	if (button_pressed(RightButton) = True and prevStatus(RightButton) = False) then
-		prevStatus(RightButton) := True;
-		Event.signal(rightPressed);
-	elsif (button_pressed(RightButton) = False and prevStatus(RightButton) = True) then
-		prevStatus(RightButton) := False;
-		Event.signal(rightReleased);
-	end if;
+		if (button_pressed(LeftButton) = True and prevStatus(LeftButton) = False) then
+			prevStatus(LeftButton) := True;
+			Event.signal(leftPressed);
+		elsif (button_pressed(LeftButton) = False and prevStatus(LeftButton) = True) then
+			prevStatus(LeftButton) := False;
+			Event.signal(leftReleased);
+		end if;
+		
+		if (button_pressed(RightButton) = True and prevStatus(RightButton) = False) then
+			prevStatus(RightButton) := True;
+			Event.signal(rightPressed);
+		elsif (button_pressed(RightButton) = False and prevStatus(RightButton) = True) then
+			prevStatus(RightButton) := False;
+			Event.signal(rightReleased);
+		end if;
 
-	Next_Time := Next_Time + sigPeriod;
-	delay until Next_Time;
+		Next_Time := Next_Time + sigPeriod;
+		delay until Next_Time;
 
-	exit when simulation_stopped;
+		exit when simulation_stopped;
 	end loop;
 end eventDispatcherTask;
 
@@ -112,67 +112,72 @@ task body motorControlTask is
 	buttonStatus : buttonArray := (False, False, False, False);
 begin
 	loop
-	Event.Wait(rcvEvent);
-	case rcvEvent is
-		when upPressed =>
-			finalSpeed(LeftMotor) := finalSpeed(LeftMotor) + speedStep;
-			finalSpeed(RightMotor) := finalSpeed(RightMotor) + speedStep;
-			put_line("Going Front...");
-			buttonStatus(UpButton) := True;
-		when upReleased =>
-			if buttonStatus(UpButton) then
-				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - speedStep;
-				finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
-				put_line("Not Going Front...");
-				buttonStatus(UpButton) := False;
-			end if;
-		when downReleased =>
-			if buttonStatus(DownButton) then
+		Event.Wait(rcvEvent);
+		-- All button release actions will be performed only if button pressing is also recorded.
+		-- finalSpeed is updated based on the events received
+		case rcvEvent is
+			when upPressed =>
 				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) + speedStep;
 				finalSpeed(RightMotor) := finalSpeed(RightMotor) + speedStep;
-				put_line("Going Back...");
-				buttonStatus(DownButton) := False;
-			end if;
-		when downPressed =>
-			finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - speedStep;
-			finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
-			put_line("Not Going Back..."); 
-			buttonStatus(DownButton) := True;
-		when leftPressed =>
-			finalSpeed(RightMotor) := finalSpeed(RightMotor) + speedStep;
-			put_line("Turning Left...");
-			buttonStatus(LeftButton) := True;
-		when leftReleased =>
-			if buttonStatus(LeftButton) then
-				finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
-				put_line("Not Turning Left...");
-				buttonStatus(LeftButton) := False;
-			end if;
-		when rightPressed =>
-			finalSpeed(LeftMotor) := finalSpeed(LeftMotor) + speedStep;
-			put_line("Turning Right...");
-			buttonStatus(RightButton) := True;
-		when rightReleased =>
-			if buttonStatus(RightButton) then
+				put_line("Going Front...");
+				buttonStatus(UpButton) := True;
+			when upReleased =>
+				if buttonStatus(UpButton) then
+					finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - speedStep;
+					finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
+					put_line("Not Going Front...");
+					buttonStatus(UpButton) := False;
+				end if;
+			when downReleased =>
+				if buttonStatus(DownButton) then
+					finalSpeed(LeftMotor) := finalSpeed(LeftMotor) + speedStep;
+					finalSpeed(RightMotor) := finalSpeed(RightMotor) + speedStep;
+					put_line("Not Going Back...");
+					buttonStatus(DownButton) := False;
+				end if;
+			when downPressed =>
 				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - speedStep;
-				put_line("Not Turning Right...");
-				buttonStatus(RightButton) := False;
-			end if;
-		when onLine =>
-			finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - (2 * finalSpeed(LeftMotor));
-			finalSpeed(RightMotor) := finalSpeed(RightMotor) - (2 * finalSpeed(RightMotor));
-			put_line("Reversing");
-		when offLine =>
-			finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - finalSpeed(LeftMotor);
-			finalSpeed(RightMotor) := finalSpeed(RightMotor) - finalSpeed(RightMotor);
-			put_line("Stopping");
-			buttonStatus := (False, False, False, False);
-	end case;
+				finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
+				put_line("Going Back..."); 
+				buttonStatus(DownButton) := True;
+			when leftPressed =>
+				finalSpeed(RightMotor) := finalSpeed(RightMotor) + speedStep;
+				put_line("Turning Left...");
+				buttonStatus(LeftButton) := True;
+			when leftReleased =>
+				if buttonStatus(LeftButton) then
+					finalSpeed(RightMotor) := finalSpeed(RightMotor) - speedStep;
+					put_line("Not Turning Left...");
+					buttonStatus(LeftButton) := False;
+				end if;
+			when rightPressed =>
+				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) + speedStep;
+				put_line("Turning Right...");
+				buttonStatus(RightButton) := True;
+			when rightReleased =>
+				if buttonStatus(RightButton) then
+					finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - speedStep;
+					put_line("Not Turning Right...");
+					buttonStatus(RightButton) := False;
+				end if;
+			when onLine =>
+				-- When online reverse the direction until puck is offline
+				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - (2 * finalSpeed(LeftMotor));
+				finalSpeed(RightMotor) := finalSpeed(RightMotor) - (2 * finalSpeed(RightMotor));
+				put_line("Reversing");
+			when offLine =>
+				finalSpeed(LeftMotor) := finalSpeed(LeftMotor) - finalSpeed(LeftMotor);
+				finalSpeed(RightMotor) := finalSpeed(RightMotor) - finalSpeed(RightMotor);
+				put_line("Stopping");
+				
+				-- If a button is pressed when puck when online, then dont perform button release actions as the puck is already stopped.
+				buttonStatus := (False, False, False, False);
+		end case;
 
-	set_motor_speed (LeftMotor, finalSpeed(LeftMotor));
-	set_motor_speed (RightMotor, finalSpeed(RightMotor));
+		set_motor_speed (LeftMotor, finalSpeed(LeftMotor));
+		set_motor_speed (RightMotor, finalSpeed(RightMotor));
 
-	exit when simulation_stopped;
+		exit when simulation_stopped;
 	end loop;
 end motorControlTask;
 

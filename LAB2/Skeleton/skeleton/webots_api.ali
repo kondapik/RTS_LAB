@@ -1,0 +1,185 @@
+V "GNAT Lib v9"
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_PROTECTED_TYPES
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_STREAMS
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLICIT_LOOPS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+RV MAX_TASK_ENTRIES=2
+RV MAX_TASKS=1
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U webots_api%b		webots_api.adb		943f6123 OO PK IL
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.sockets%s	g-socket.adb		g-socket.ali
+W interfaces%s		interfac.ads		interfac.ali
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+Z system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+U webots_api%s		webots_api.ads		ef8f139d EE OO PK IL
+Z ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z system%s		system.ads		system.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+D ada.ads		20200312110721 76789da1 ada%s
+D a-except.ads		20200312110721 291912d5 ada.exceptions%s
+D a-finali.ads		20200312110721 bf4f806b ada.finalization%s
+D a-reatim.ads		20200312110721 0240fc73 ada.real_time%s
+D a-stream.ads		20200312110721 119b8fb3 ada.streams%s
+D a-tags.ads		20200312110721 491b781d ada.tags%s
+D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20200312110721 eff36322 ada.unchecked_deallocation%s
+D gnat.ads		20200312110721 b5988c27 gnat%s
+D g-socket.ads		20200312110721 b63a5f09 gnat.sockets%s
+D interfac.ads		20200312110721 5ab55268 interfaces%s
+D i-c.ads		20200312110721 5421119b interfaces.c%s
+D system.ads		20200312110721 4635ec04 system%s
+D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20200312110721 54135002 system.exception_table%s
+D s-finmas.ads		20200312110721 7811a767 system.finalization_masters%s
+D s-finroo.ads		20200312110721 4ff27390 system.finalization_root%s
+D s-linux.ads		20200312110721 ed0b8aee system.linux%s
+D s-multip.ads		20200312110721 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20200808120453 0b994636 system.os_constants%s
+D s-osinte.ads		20200312110721 710cf8c6 system.os_interface%s
+D s-parame.ads		20200312110721 48ec542b system.parameters%s
+D s-pooglo.ads		20200312110721 ede33ef8 system.pool_global%s
+D s-secsta.ads		20200312110721 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20200312110721 a7318a92 system.soft_links%s
+D s-stache.ads		20200312110721 a37c21ec system.stack_checking%s
+D s-stausa.ads		20200312110721 017a0a05 system.stack_usage%s
+D s-stalib.ads		20200312110721 09bd3940 system.standard_library%s
+D s-stoele.ads		20200312110721 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20200312110721 b16154c2 system.storage_pools%s
+D s-stratt.ads		20200312110721 aedef97e system.stream_attributes%s
+D s-tasinf.ads		20200312110721 2b3f8252 system.task_info%s
+D s-taspri.ads		20200312110721 f40ac08d system.task_primitives%s
+D s-taprop.ads		20200312110721 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20200312110721 b9d612e2 system.tasking%s
+D s-taprob.ads		20200312110721 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20200312110721 60ad3dae system.tasking.protected_objects.entries%s
+D s-tasren.ads		20200312110721 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20200312110721 cca55c94 system.tasking.stages%s
+D s-traent.ads		20200312110721 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20200312110721 34867c83 system.unsigned_types%s
+D webots_api.ads	20201115125118 ef8f139d webots_api%s
+D webots_api.adb	20211205074214 86a4f06c webots_api%b
+X 1 ada.ads
+16K9*Ada 20e8 43|1r6 1r24
+X 5 a-stream.ads
+36K13*Streams 87e16 43|1w10 1r28
+X 9 gnat.ads
+34K9*GNAT 57e9 43|2r6 2r24 100r7
+X 10 g-socket.ads
+55K14*Sockets 1472e17 43|2w11 2r29 100r12
+379U14*Initialize 43|100s20
+412I9*Socket_Type<integer> 43|93r15
+492I9*Port_Type<integer>
+597R9*Sock_Addr_Type 600e14 43|94r15
+598r7*Addr{517R9} 43|103m15
+599i7*Port{492I9} 43|104m15
+623V13*Inet_Addr{517R9} 43|103s23
+1008U14*Create_Socket 43|101s7
+1046U14*Close_Socket 43|117s9
+1049U14*Connect_Socket 43|106s7
+1213P9*Stream_Access(5|39R9) 43|95r15
+1216V13*Stream{1213P9} 43|107s18
+X 11 interfac.ads
+38K9*Interfaces 184e15 43|3w6 3r25
+52I9*Integer_32<integer> 43|11r51 43r52 44r52
+63M9*Unsigned_8 43|13r28 14r28 15r28 16r28 17r28 18r28 19r28 20r28
+74M9*Unsigned_32 43|21r28
+X 27 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 42 webots_api.ads
+1K9*Webots_API 18l5 18e15 43|7b14 151l5 151t15
+3t8*WebotsSync 43|92b13 121l7 121t17
+4Y11 start 43|99b12 108l9 108t14
+5Y11 sync 43|110b14 115l11 115t15
+8E8*MotorID 8e42 11r34 43|26r37 41r37 123r34
+8n20*LeftMotor{8E8} 43|43r14
+8n31*RightMotor{8E8} 43|44r14
+9E8*LightSensorID 9e40 12r35 43|27r37 49r38 127r36
+9n26*LS1{9E8} 43|51r14
+9n31*LS2{9E8} 43|52r14
+9n36*LS3{9E8} 43|53r14
+10E8*ButtonID 10e67 15r32 43|30r39 66r39 141r33
+10n21*UpButton{10E8} 43|68r14
+10n31*DownButton{10E8} 43|69r14
+10n43*LeftButton{10E8} 43|70r14
+10n55*RightButton{10E8} 43|71r14
+11U13*set_motor_speed 11>29 11>43 43|123b13 125l7 125t22
+11e29 id{8E8} 43|123b29 124r25
+11i43 value{integer} 43|123b43 124r29
+12V12*read_light_sensor{integer} 12>30 43|127b12 129l7 129t24
+12e30 id{9E8} 43|127b31 128r33
+13V12*read_distance_sensor{integer} 43|131b12 133l7 133t27
+14V12*simulation_stopped{boolean} 43|116s10 136b12 138l7 138t25
+15V12*button_pressed{boolean} 15>27 43|141b12 143l7 143t21
+15e27 id{10E8} 43|141b28 142r35
+16V12*simulation_time{integer} 43|145b12 147l7 147t22
+X 43 webots_api.adb
+9X3 Webots_API_Exception 45r30 54r30 72r30
+11A8 Data_Field(11|52I9)<integer> 22r28
+12R8 Exchange_Package 23e13 33r38 34r37 36r20 37r20 80r37 84r38 96r17 97r17
+. 112r9 113r9
+13m5*size{11|63M9}
+14m5*header{11|63M9}
+15m5*simulation_stopped{11|63M9} 63r27
+16m5*unused{11|63M9}
+17m5*up_button_pressed{11|63M9} 68r46
+18m5*down_button_pressed{11|63M9} 69r48
+19m5*left_button_pressed{11|63M9} 70r48
+20m5*right_button_pressed{11|63M9} 71r49
+21m5*simulation_time{11|74M9} 77r35
+22a5*data{11A8} 43m41 44m41 51r49 52r49 53r49 59r35
+25w13 Obj 40b18 88l7 88t10 111r22 114r9 124r5 128r12 132r12 137r12 142r12
+. 146r12
+26U15 set_motor_speed 26>32 26>46 41b15 47l9 47t24 124s9
+26e32 id{42|8E8} 41b32 42r12
+26i46 value{integer} 41b46 43r63 44r63
+27V14 get_light_sensor{integer} 27>32 49b14 56l9 56t25 128s16
+27e32 id{42|9E8} 49b33 50r12
+28V14 get_distance_sensor{integer} 58b14 60l9 60t28 132s16
+29V14 get_simulation_stopped{boolean} 62b14 64l9 64t31 137s16
+30V14 get_button_pressed{boolean} 30>34 66b14 74l9 74t27 142s16
+30e34 id{42|10E8} 66b34 67r12
+31V14 get_simulation_time{integer} 76b14 78l9 78t28 146s16
+33V14 get_sent_package{12R8} 84b14 86l9 86t25 111s26
+34U15 set_recv_package 34>33 80b15 82l9 82t25 114s13
+34r33 p{12R8} 80b33 81r23
+36r5 sent_package{12R8} 43r28 44r28 85r14
+37r5 recv_package{12R8} 51r36 52r36 53r36 59r22 63r14 68r33 69r35 70r35 71r36
+. 77r22 81r7
+93i5 Client{10|412I9} 101m22 106r23 107r26 117r23
+94r5 Address{10|597R9} 103m7 104m7 106r31
+95p5 Channel{10|1213P9} 107m7 112r32 113r31
+96r5 tx_buffer{12R8} 111m9 112r41
+97r5 rx_buffer{12R8} 113m41 113r41 114r30
+

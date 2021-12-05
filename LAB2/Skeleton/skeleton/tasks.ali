@@ -1,0 +1,121 @@
+V "GNAT Lib v9"
+P ZX
+
+RN
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_IO
+RV NO_RELATIVE_DELAY
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_TASKS=1
+
+U tasks%b		tasks.adb		460fc301 OO PK
+W ada%s			ada.ads			ada.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W system%s		system.ads		system.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W webots_api%s		webots_api.adb		webots_api.ali  AD
+
+U tasks%s		tasks.ads		30c7e494 EE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+
+D ada.ads		20200312110721 76789da1 ada%s
+D a-calend.ads		20200312110721 b288ede8 ada.calendar%s
+D a-caldel.ads		20200312110721 9f20b83d ada.calendar.delays%s
+D a-except.ads		20200312110721 291912d5 ada.exceptions%s
+D a-ioexce.ads		20200312110721 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20200312110721 0240fc73 ada.real_time%s
+D a-retide.ads		20200312110721 081cdaa4 ada.real_time.delays%s
+D a-stream.ads		20200312110721 119b8fb3 ada.streams%s
+D a-tags.ads		20200312110721 491b781d ada.tags%s
+D a-textio.ads		20200312110721 881db35a ada.text_io%s
+D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20200312110721 5ab55268 interfaces%s
+D i-c.ads		20200312110721 5421119b interfaces.c%s
+D i-cstrea.ads		20200312110721 e53d8b8e interfaces.c_streams%s
+D system.ads		20200312110721 4635ec04 system%s
+D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
+D s-conca2.ads		20200312110721 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20200312110721 0ebbdb71 system.crtl%s
+D s-exctab.ads		20200312110721 54135002 system.exception_table%s
+D s-ficobl.ads		20200312110721 078245e4 system.file_control_block%s
+D s-imgint.ads		20200312110721 02dbe0c2 system.img_int%s
+D s-linux.ads		20200312110721 ed0b8aee system.linux%s
+D s-multip.ads		20200312110721 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20200808120453 0b994636 system.os_constants%s
+D s-osinte.ads		20200312110721 710cf8c6 system.os_interface%s
+D s-parame.ads		20200312110721 48ec542b system.parameters%s
+D s-secsta.ads		20200312110721 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20200312110721 a7318a92 system.soft_links%s
+D s-stache.ads		20200312110721 a37c21ec system.stack_checking%s
+D s-stausa.ads		20200312110721 017a0a05 system.stack_usage%s
+D s-stalib.ads		20200312110721 09bd3940 system.standard_library%s
+D s-stoele.ads		20200312110721 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20200312110721 2b3f8252 system.task_info%s
+D s-taspri.ads		20200312110721 f40ac08d system.task_primitives%s
+D s-taprop.ads		20200312110721 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20200312110721 b9d612e2 system.tasking%s
+D s-tassta.ads		20200312110721 cca55c94 system.tasking.stages%s
+D s-traent.ads		20200312110721 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20200312110721 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20200312110721 1b7d22d2 system.wch_con%s
+D tasks.ads		20201110142817 328718e7 tasks%s
+D tasks.adb		20211205081914 576f6b56 tasks%b
+D webots_api.ads	20201115125118 ef8f139d webots_api%s
+X 1 ada.ads
+16K9*Ada 20e8 41|1r6 1r31 42|1r6 1r26 2r6 2r26
+X 6 a-reatim.ads
+39K13*Real_Time 185e18 41|1w10 1r35 42|2w10 2r30
+49O9*Time<duration> 41|10r20 42|19r17
+54O9*Time_Span<duration> 41|9r20
+61V13*Clock{49O9} 41|10s28
+65V14*"+"{49O9} 42|48s30
+119V13*Milliseconds{54O9} 41|9s33
+X 10 a-textio.ads
+49K13*Text_IO 471e16 42|1w10 1r30
+263U14*Put_Line 42|27s7 28s7 29s7
+X 15 system.ads
+37K9*System 156e11 42|3w6 14r22
+108I12*Any_Priority{integer}
+109I12*Priority{108I12}
+112i4*Default_Priority{109I12} 42|14r29
+X 30 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 41 tasks.ads
+4K9*Tasks 9E3 14l5 14e10 42|7b14 62l5 62t10
+5U13*Background 42|56b13 60l7 60t17
+9o3 Period_Display{6|54O9} 42|48r32
+10o3 Time_Zero{6|49O9} 42|19r25
+X 42 tasks.adb
+11t8 HelloworldTask 18b13 53l7 53t21
+19o5 Next_Time{6|49O9} 48m7 48r20 49r19
+20i5 randCtrl{integer} 31r11 34r14 37r14 40r14 43m9 46m7 46r19
+21i5 ctrlTout{integer} 31r22 34r25 37r25 40r25
+X 43 webots_api.ads
+1K9*Webots_API 42|5w6 5r24 43|18e15
+8n20*LeftMotor{8E8} 42|32r26 35r26 38r26 41r26
+8n31*RightMotor{8E8} 42|33r26 36r26 39r26 42r26
+9n26*LS1{9E8} 42|27r79
+9n31*LS2{9E8} 42|28r80
+9n36*LS3{9E8} 42|29r80
+11U13*set_motor_speed 42|32s9 33s9 35s9 36s9 38s9 39s9 41s9 42s9
+12V12*read_light_sensor{integer} 42|27s61 28s62 29s62
+14V12*simulation_stopped{boolean} 42|51s17 57s15
+

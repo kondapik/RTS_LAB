@@ -1,0 +1,99 @@
+V "GNAT Lib v9"
+M P 0 W=b
+P ZX
+
+RN
+RV NO_DELAY
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+RV MAX_TASK_ENTRIES=1
+RV MAX_TASKS=1+
+
+U main%b		main.adb		64720308 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+Z system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W tasks%s		tasks.adb		tasks.ali
+W webots_api%s		webots_api.adb		webots_api.ali
+
+D ada.ads		20200312110721 76789da1 ada%s
+D a-except.ads		20200312110721 291912d5 ada.exceptions%s
+D a-finali.ads		20200312110721 bf4f806b ada.finalization%s
+D a-reatim.ads		20200312110721 0240fc73 ada.real_time%s
+D a-retide.ads		20200312110721 081cdaa4 ada.real_time.delays%s
+D a-stream.ads		20200312110721 119b8fb3 ada.streams%s
+D a-tags.ads		20200312110721 491b781d ada.tags%s
+D a-unccon.ads		20200312110721 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20200312110721 5ab55268 interfaces%s
+D i-c.ads		20200312110721 5421119b interfaces.c%s
+D main.adb		20211205064505 fd0f1805 main%b
+D system.ads		20200312110721 4635ec04 system%s
+D s-atacco.ads		20200312110721 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20200312110721 54135002 system.exception_table%s
+D s-finroo.ads		20200312110721 4ff27390 system.finalization_root%s
+D s-linux.ads		20200312110721 ed0b8aee system.linux%s
+D s-multip.ads		20200312110721 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20200808120453 0b994636 system.os_constants%s
+D s-osinte.ads		20200312110721 710cf8c6 system.os_interface%s
+D s-parame.ads		20200312110721 48ec542b system.parameters%s
+D s-secsta.ads		20200312110721 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20200312110721 a7318a92 system.soft_links%s
+D s-stache.ads		20200312110721 a37c21ec system.stack_checking%s
+D s-stausa.ads		20200312110721 017a0a05 system.stack_usage%s
+D s-stalib.ads		20200312110721 09bd3940 system.standard_library%s
+D s-stoele.ads		20200312110721 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20200312110721 2b3f8252 system.task_info%s
+D s-taspri.ads		20200312110721 f40ac08d system.task_primitives%s
+D s-taprop.ads		20200312110721 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20200312110721 b9d612e2 system.tasking%s
+D s-taprob.ads		20200312110721 acd6094d system.tasking.protected_objects%s
+D s-tpoben.ads		20200312110721 60ad3dae system.tasking.protected_objects.entries%s
+D s-tasren.ads		20200312110721 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20200312110721 cca55c94 system.tasking.stages%s
+D s-traent.ads		20200312110721 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20200312110721 34867c83 system.unsigned_types%s
+D tasks.ads		20201110142817 328718e7 tasks%s
+D webots_api.ads	20201115125118 ef8f139d webots_api%s
+X 1 ada.ads
+16K9*Ada 20e8 11|3r6 3r26
+X 4 a-reatim.ads
+39K13*Real_Time 185e18 11|3w10 3r30
+49O9*Time<duration> 11|17r16
+54O9*Time_Span<duration> 11|18r16
+61V13*Clock{49O9} 11|17s24
+65V14*"+"{49O9} 11|27s28
+119V13*Milliseconds{54O9} 11|18s29
+X 11 main.adb
+7U11*main 7b11 36l5 36t9
+12t8 SyncTask 16b13 30l7 30t15 33r3
+13Y11 start 22b12 33s12
+17o5 NextTime{4|49O9} 27m7 27r19 28r19
+18o5 Period{4|54O9} 27r30
+X 12 system.ads
+37K9*System 11|2w6 9r20 14r22 12|156e11
+108I12*Any_Priority{integer}
+109I12*Priority{108I12} 11|9r27 14r29
+X 24 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 37 tasks.ads
+4K9*Tasks 11|1w6 34r3 37|14e10
+5U13*Background 11|34s9
+X 38 webots_api.ads
+1K9*Webots_API 11|5w6 5r26 38|18e15
+3t8*WebotsSync 11|20r5 21r5 25r7
+4Y11 start 11|20s16
+5Y11 sync 11|21s16 25s18
+14V12*simulation_stopped{boolean} 11|26s17
+
